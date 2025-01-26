@@ -15,7 +15,11 @@ class ForgetPassoward extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          
           children: [
+            SizedBox(
+              height: 24,
+            ),
             Text.rich(
               TextSpan(
                 text: 'لا تقلق ، ما عليك سوى كتابة رقم هاتفك وسنرسل رمز التحقق.  ',

@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:graduation_project/Login&Signup_Page/widget/forget_passoward.dart';
+import 'package:graduation_project/Login&Signup_Page/widget/have_an_account_widget.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
 import 'package:graduation_project/core/widgets/custom_button.dart';
@@ -40,10 +42,18 @@ class LoginBodyDetiles extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(
-                'نسيت كلمة المرور؟',
-                style: TextStyles.semiBold13.copyWith(
-                  color: AppColors.lightPrimaryColor,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ForgetPassoward(),
+                    ),
+                  );
+                },
+                child: Text(
+                                'نسيت كلمة المرور؟',
+                  style: TextStyles.semiBold16.copyWith(color: AppColors.primaryColor),
                 ),
               ),
             ],
