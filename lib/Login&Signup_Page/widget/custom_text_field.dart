@@ -49,7 +49,7 @@ class CustomTextFormField extends StatelessWidget {
         fillColor: const Color(0xFFF9FAFA),
         border: _buildBorder(const Color(0xFFE6E9E9)), // اللون الافتراضي
         enabledBorder: _buildBorder(const Color(0xFFE6E9E9)), // عند عدم التركيز
-        focusedBorder: _buildBorder(const Color(0xFF28A745)), // اللون الأخضر عند التركيز
+        focusedBorder: _buildBorder(const Color(0xFF0c334b)), // اللون الأخضر عند التركيز
       ),
     );
   }
