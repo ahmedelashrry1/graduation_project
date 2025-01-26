@@ -8,6 +8,7 @@ import 'package:graduation_project/Login&Signup_Page/widget/custom_text_field.da
 import 'package:graduation_project/Login&Signup_Page/widget/dont_have_account_widget.dart';
 import 'package:graduation_project/Login&Signup_Page/widget/or_divider.dart';
 import 'package:graduation_project/Login&Signup_Page/widget/social_login_button.dart';
+import 'package:graduation_project/core/widgets/logo_app.dart';
 
 class LoginBodyDetiles extends StatelessWidget {
   const LoginBodyDetiles({
@@ -19,7 +20,8 @@ class LoginBodyDetiles extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 180),
+          LogoApp(),
+          // const SizedBox(height: 180),
           CustomTextFormField(
             hintText: 'البريد الإلكتروني',
             textInputType: TextInputType.emailAddress,
@@ -47,11 +49,11 @@ class LoginBodyDetiles extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 33,
+            height: 24,
           ),
           DontHaveAnAccountWidget(),
           const SizedBox(
-            height: 50,
+            height: 24,
           ),
           CustomButton(text: 'تسجيل الدخول', onPressed: () {}),
           const SizedBox(
@@ -71,17 +73,16 @@ class LoginBodyDetiles extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-            SocialLoginButton(
+          SocialLoginButton(
             onPressed: () {
               // context.read<SigninCubit>().signinWithFacebook();
             },
             image: 'assets/images/appl_icon.svg',
             title: 'تسجيل بواسطة ابل',
           ),
-          
-              const SizedBox(
-                height: 16,
-              ),
+          const SizedBox(
+            height: 16,
+          ),
           SocialLoginButton(
             onPressed: () {
               // context.read<SigninCubit>().signinWithFacebook();
