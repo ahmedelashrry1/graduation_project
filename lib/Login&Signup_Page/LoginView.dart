@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/login_page/widget/LoginBodyView.dart';
+import 'package:graduation_project/Login&Signup_Page/widget/LoginBodyView.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

@@ -3,10 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
-import 'package:graduation_project/login_page/widget/custom_text_field.dart';
-import 'package:graduation_project/login_page/widget/dont_have_account_widget.dart';
-import 'package:graduation_project/login_page/widget/or_divider.dart';
-import 'package:graduation_project/login_page/widget/social_login_button.dart';
+import 'package:graduation_project/core/widgets/custom_button.dart';
+import 'package:graduation_project/Login&Signup_Page/widget/custom_text_field.dart';
+import 'package:graduation_project/Login&Signup_Page/widget/dont_have_account_widget.dart';
+import 'package:graduation_project/Login&Signup_Page/widget/or_divider.dart';
+import 'package:graduation_project/Login&Signup_Page/widget/social_login_button.dart';
 
 class LoginBodyDetiles extends StatelessWidget {
   const LoginBodyDetiles({
@@ -18,7 +19,7 @@ class LoginBodyDetiles extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 220),
+          const SizedBox(height: 180),
           CustomTextFormField(
             hintText: 'البريد الإلكتروني',
             textInputType: TextInputType.emailAddress,
@@ -51,6 +52,10 @@ class LoginBodyDetiles extends StatelessWidget {
           DontHaveAnAccountWidget(),
           const SizedBox(
             height: 50,
+          ),
+          CustomButton(text: 'تسجيل الدخول', onPressed: () {}),
+          const SizedBox(
+            height: 21,
           ),
           OrDivider(),
           const SizedBox(
