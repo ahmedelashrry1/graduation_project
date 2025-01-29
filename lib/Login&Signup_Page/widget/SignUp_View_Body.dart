@@ -31,36 +31,36 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
             PickImageWidget(),
             const SizedBox(height: 30),
             CustomTextFormField(
-              hintText: 'الاسم الكامل',
+              hintText: 'Full name',
               textInputType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 16),
             CustomTextFormField(
-              hintText: 'البريد الإلكتروني',
+              hintText: 'Email Address',
               textInputType: TextInputType.emailAddress,
               suffixIcon: const Icon(Icons.email),
             ),
             const SizedBox(height: 16),
             CustomTextFormField(
-              hintText: 'كلمة المرور',
+              hintText: 'Password',
               textInputType: TextInputType.text,
               suffixIcon: const Icon(Icons.remove_red_eye_outlined),
             ),
             const SizedBox(height: 16),
             // Dropdown لاختيار نوع المستخدم
             CustomDropdownButtonFormField(
-              hintText: 'اختيار عضو التدريس',
+              hintText: '  Select Role',
               textInputType: TextInputType.text,
               
 
               items: const [
                 DropdownMenuItem(
                   value: 'teacher',
-                  child: Text('معلم'),
+                  child: Text('Teacher'),
                 ),
                 DropdownMenuItem(
                   value: 'student',
-                  child: Text('طالب'),
+                  child: Text('Student'),
                 ),
               ],
               onChanged: (value) {
@@ -97,7 +97,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 if (selectedRole == null) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('يرجى اختيار نوع المستخدم'),
+                      content: Text('Please select a role'),
                     ),
                   );
                 } else {
@@ -105,7 +105,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   print('Role: $selectedRole');
                 }
               },
-              text: 'إنشاء حساب جديد',
+              text: 'Sign Up',
             ),
             const SizedBox(height: 26),
             HaveAnAccountWidget(),

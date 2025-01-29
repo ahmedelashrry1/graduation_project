@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'cairo',
       ),
-      locale: const Locale('ar'), // اللغة الافتراضية: العربية
+      // locale: const Locale('ar'), // اللغة الافتراضية: العربية
       supportedLocales: const [
         Locale('ar'), // اللغة العربية
         Locale('en'), // اللغة الإنجليزية

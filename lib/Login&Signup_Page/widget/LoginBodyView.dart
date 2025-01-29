@@ -13,7 +13,7 @@ class LoginBodyView extends StatelessWidget {
         // vertical: 20,
       ),
       child: Scaffold( 
-        appBar: buildAppBar(context, title: 'تسجيل الدخول'),
+        appBar: buildAppBar(context, title: 'Login'),
         
         body: LoginBodyDetiles(),
       ),

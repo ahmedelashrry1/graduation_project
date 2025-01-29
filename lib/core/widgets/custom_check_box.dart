@@ -36,7 +36,9 @@ class CustomCheckBox extends StatelessWidget {
                   'assets/images/Check.svg',
                 ),
               )
-            : const SizedBox(),
+            : const SizedBox(
+              
+            ),
       ),
     );
   }

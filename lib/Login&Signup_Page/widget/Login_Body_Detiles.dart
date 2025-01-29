@@ -1,8 +1,7 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:graduation_project/Login&Signup_Page/widget/forget_passoward.dart';
-import 'package:graduation_project/Login&Signup_Page/widget/have_an_account_widget.dart';
+import 'package:graduation_project/chat/chat_view.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
 import 'package:graduation_project/core/widgets/custom_button.dart';
@@ -25,13 +24,13 @@ class LoginBodyDetiles extends StatelessWidget {
           LogoApp(),
           // const SizedBox(height: 180),
           CustomTextFormField(
-            hintText: 'البريد الإلكتروني',
+            hintText: 'Email Address',
             textInputType: TextInputType.emailAddress,
             suffixIcon: const Icon(Icons.email),
           ),
           const SizedBox(height: 16),
           CustomTextFormField(
-            hintText: 'كلمة المرور',
+            hintText: 'Password',
             textInputType: TextInputType.visiblePassword,
             suffixIcon: const Icon(Icons.remove_red_eye_outlined),
             obscureText: true,
@@ -52,7 +51,7 @@ class LoginBodyDetiles extends StatelessWidget {
                   );
                 },
                 child: Text(
-                                'نسيت كلمة المرور؟',
+                                'Forgot Password?',
                   style: TextStyles.semiBold16.copyWith(color: AppColors.primaryColor),
                 ),
               ),
@@ -65,7 +64,14 @@ class LoginBodyDetiles extends StatelessWidget {
           const SizedBox(
             height: 24,
           ),
-          CustomButton(text: 'تسجيل الدخول', onPressed: () {}),
+          CustomButton(text: 'Login', onPressed: () {
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ChatView(),
+                    ),
+                  );
+          }),
           const SizedBox(
             height: 21,
           ),
@@ -78,7 +84,7 @@ class LoginBodyDetiles extends StatelessWidget {
               // context.read<SigninCubit>().signinWithGoogle();
             },
             image: 'assets/images/google_icon.svg',
-            title: 'تسجيل بواسطة جوجل',
+            title: 'Register with Google',
           ),
           const SizedBox(
             height: 16,
@@ -88,7 +94,7 @@ class LoginBodyDetiles extends StatelessWidget {
               // context.read<SigninCubit>().signinWithFacebook();
             },
             image: 'assets/images/appl_icon.svg',
-            title: 'تسجيل بواسطة ابل',
+            title: 'Register with Apple',
           ),
           const SizedBox(
             height: 16,
@@ -98,7 +104,7 @@ class LoginBodyDetiles extends StatelessWidget {
               // context.read<SigninCubit>().signinWithFacebook();
             },
             image: 'assets/images/facebook_icon.svg',
-            title: 'تسجيل بواسطة فيسبوك',
+            title: ' Register with Facebook',
           ),
         ],
       ),

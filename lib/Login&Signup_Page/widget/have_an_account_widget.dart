@@ -15,7 +15,7 @@ class HaveAnAccountWidget extends StatelessWidget {
       TextSpan(
         children: [
           TextSpan(
-            text: 'تمتلك حساب بالفعل ؟',
+            text: "Have an Account? ",
             style: TextStyles.semiBold16.copyWith(
               color: const Color(0xFF949D9E),
             ),
@@ -31,7 +31,7 @@ class HaveAnAccountWidget extends StatelessWidget {
               ..onTap = () {
                 Navigator.pop(context);
               },
-            text: 'تسجيل الدخول',
+            text: 'Login',  
             style:
                 TextStyles.semiBold16.copyWith(color: AppColors.primaryColor),
           ),
