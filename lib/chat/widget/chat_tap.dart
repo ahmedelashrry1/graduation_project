@@ -1,28 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/chat/widget/ditails_chat.dart';
+import 'package:graduation_project/chat/widget/chat_details.dart';
+import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
 
 class ChatsTab extends StatelessWidget {
+  ChatsTab({super.key});
+
+  // قائمة تحتوي على بيانات المحادثات
+  final List<Map<String, String>> chatsData = [
+    {'name': 'Ahmed ', 'image': 'assets/images/student.png'},
+    {'name': 'Mohamed ', 'image': 'assets/images/student.png'},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 15, // عدد المحادثات
+      itemCount: chatsData.length, // عدد المحادثات بناءً على القائمة
       itemBuilder: (context, index) {
-        return ListTile(
-          leading: CircleAvatar(
-            child: Image.asset('assets/images/student.png'),
-          ),
-          title: Text('احمد العشري',
-              style: TextStyles.bold16.copyWith(color: Colors.black)),
-          subtitle: Text('عامل اي يعم'),
-          onTap: () {
-            Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const DitailsChat(),
+        final chat = chatsData[index]; // استدعاء بيانات المحادثة الحالية
+
+        return Column(
+          children: [
+            ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage(chat['image']!), // صورة المستخدم
+              ),
+              title: Text(
+                chat['name']!,
+                style: TextStyles.bold16.copyWith(color: Colors.black),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChatDetails(
+                      userName: chat['name']!,
+                      userIcon: chat['image']!,
                     ),
-                  );
-          },
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 8), // المسافة بين المحادثات
+            Divider(
+                thickness: 0, height: 0, color: AppColors.lightPrimaryColor),
+            // الخط الفاصل
+            const SizedBox(height: 2),
+          ],
         );
       },
     );

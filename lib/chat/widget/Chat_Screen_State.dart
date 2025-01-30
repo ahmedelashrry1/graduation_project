@@ -2,29 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/chat/widget/Tap_Bar.dart';
 import 'package:graduation_project/chat/widget/chat_tap.dart';
 import 'package:graduation_project/chat/widget/group_tap.dart';
+import 'package:graduation_project/chat/widget/live_tap.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
 
-class  ChatScreen extends StatefulWidget {
+class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen>
-    with SingleTickerProviderStateMixin {
+class _ChatScreenState extends State<ChatScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  bool showNotification = true;
-  bool showBackButton = true;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);  // تغيير length إلى 3
   }
 
   @override
   void dispose() {
-    _tabController.dispose(); // التخلص من التاب كنترولر لتفادي مشاكل التسريب
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -32,10 +32,11 @@ class _ChatScreenState extends State<ChatScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: AppColors.primaryColor,
         centerTitle: true,
         title: Text(
-          " Chat Room",
+          "Contact Room",
           textAlign: TextAlign.center,
           style: TextStyles.bold19.copyWith(color: Colors.white),
         ),
@@ -43,9 +44,7 @@ class _ChatScreenState extends State<ChatScreen>
           preferredSize: Size.fromHeight(50),
           child: Column(
             children: [
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               TapBar(tabController: _tabController),
             ],
           ),
@@ -54,14 +53,12 @@ class _ChatScreenState extends State<ChatScreen>
       body: TabBarView(
         controller: _tabController,
         children: [
-          ChatsTab(), // محتوى تبويب المحادثات
-          GroupsTab(), // محتوى تبويب الجروبات
+          ChatsTab(),  // محتوى تبويب المحادثات
+          GroupsTab(), // محتوى تبويب المجموعات
+          LiveTap(), // محتوى تبويب "Live Room"
         ],
       ),
     );
   }
 }
-
-
-
 

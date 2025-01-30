@@ -13,7 +13,6 @@ class TapBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBar(
       indicatorColor: AppColors.primaryColor,
-      // labelStyle: TextStyles.bold23.copyWith(color: AppColors.primaryColor),
       controller: _tabController,
       tabs: [
         Tab(
@@ -25,7 +24,7 @@ class TapBar extends StatelessWidget {
                 width: 30,
                 height: 35,
               ),
-              SizedBox(width: 25),
+              SizedBox(width: 10),
               Text('Chats', style: TextStyle(fontSize: 20, color: Colors.white)),
             ],
           ),
@@ -39,8 +38,23 @@ class TapBar extends StatelessWidget {
                 width: 30,
                 height: 35,
               ),
-              SizedBox(width: 25),
+              SizedBox(width: 10),
               Text('Groups', style: TextStyle(fontSize: 20, color: Colors.white)),
+            ],
+          ),
+        ),
+        // إضافة التبويب الجديد
+        Tab(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/live.png', // تأكد من إضافة صورة لرمز "Live Room"
+                width: 30,
+                height: 35,
+              ),
+              SizedBox(width: 10),
+              Text('Live ', style: TextStyle(fontSize: 20, color: Colors.white)),
             ],
           ),
         ),
