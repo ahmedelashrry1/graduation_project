@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/chat/model/message.dart';
+import 'package:graduation_project/chat/model/message_model.dart';
 
 class ChatController extends ChangeNotifier {
   final List<Messages> _messages = [];

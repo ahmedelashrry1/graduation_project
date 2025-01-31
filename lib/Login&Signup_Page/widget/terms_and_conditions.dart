@@ -32,7 +32,7 @@ class TermsAndConditionsWidgetState extends StatelessWidget {
       
           ],
         ),
-        textAlign: TextAlign.right,
+        // textAlign: TextAlign.right,
       ),
     );
   }

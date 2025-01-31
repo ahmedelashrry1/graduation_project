@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/chat/widget/bubble_chat.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graduation_project/chat/widget/chat_controller.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
+import 'package:graduation_project/core/widgets/chat_body.dart';
 import 'package:provider/provider.dart';
 
 class ChatDetails extends StatelessWidget {
   final String userName;
   final String userIcon;
 
-  const ChatDetails({super.key, required this.userName, required this.userIcon});
+  const ChatDetails(
+      {super.key, required this.userName, required this.userIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -27,57 +29,16 @@ class ChatDetails extends StatelessWidget {
               SizedBox(width: 20),
               Text(userName, style: TextStyle(color: Colors.white)),
               Spacer(),
-              IconButton(icon: Icon(Icons.video_call, color: Colors.white), onPressed: () {}),
-              IconButton(icon: Icon(Icons.call, color: Colors.white), onPressed: () {}),
+              IconButton(
+                  icon: FaIcon(FontAwesomeIcons.video, color: Colors.white),
+                  onPressed: () {}),
+              IconButton(
+                  icon: FaIcon(FontAwesomeIcons.phone, color: Colors.white),
+                  onPressed: () {}),
             ],
           ),
         ),
-        body: SafeArea(
-          child: Consumer<ChatController>(
-            builder: (context, chatController, child) {
-              return Column(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      controller: chatController.scrollController,
-                      itemCount: chatController.messages.length,
-                      itemBuilder: (context, index) {
-                        final message = chatController.messages[index];
-                        bool isCurrentUser = message.senderId == chatController.currentUserId;
-                        return ChatBubble(message: message.message, isCurrentUser: isCurrentUser);
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: TextField(
-                            controller: chatController.messageController,
-                            decoration: InputDecoration(
-                              hintText: 'Type a message...',
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.send),
-                          onPressed: () {
-                            chatController.sendMessage(
-                              senderId: chatController.currentUserId,
-                              receiverId: chatController.otherUserId,
-                              message: chatController.messageController.text,
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-        ),
+        body: ChatBody(),
       ),
     );
   }

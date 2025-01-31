@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../utils/app_text_styles.dart';
 
 AppBar buildAppBar(context,
     {required String title,
@@ -31,7 +30,11 @@ AppBar buildAppBar(context,
     title: Text(
       title,
       textAlign: TextAlign.center,
-      style: TextStyles.bold19,
+    style: TextStyle(
+    fontFamily: 'SFPro',
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  ),
     ),
     
   );

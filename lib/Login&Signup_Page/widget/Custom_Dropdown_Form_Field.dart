@@ -45,7 +45,7 @@ class CustomDropdownButtonFormField extends StatelessWidget {
             return null;
           },
       decoration: InputDecoration(
-        hintStyle: TextStyles.bold13.copyWith(
+        hintStyle: TextStyles.semiBold16.copyWith(
           color: const Color(0xFF949D9E),
         ),
         hintText: hintText,

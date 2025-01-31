@@ -7,7 +7,7 @@ import 'package:graduation_project/core/utils/app_text_styles.dart';
 import 'package:graduation_project/core/widgets/custom_button.dart';
 import 'package:graduation_project/Login&Signup_Page/widget/custom_text_field.dart';
 import 'package:graduation_project/Login&Signup_Page/widget/dont_have_account_widget.dart';
-import 'package:graduation_project/Login&Signup_Page/widget/or_divider.dart';
+import 'package:graduation_project/core/widgets/or_divider.dart';
 import 'package:graduation_project/Login&Signup_Page/widget/social_login_button.dart';
 import 'package:graduation_project/core/widgets/logo_app.dart';
 

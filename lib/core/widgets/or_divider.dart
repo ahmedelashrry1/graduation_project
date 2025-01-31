@@ -17,7 +17,7 @@ class OrDivider extends StatelessWidget {
           width: 18,
         ),
         Text(
-          'أو',
+          'OR',
           textAlign: TextAlign.center,
           style: TextStyles.semiBold16,
         ),

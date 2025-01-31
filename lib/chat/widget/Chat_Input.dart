@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ChatInput extends StatelessWidget {
   final TextEditingController messageController;
-  final Function(String) onSend; // تأكد من أن onSend يتوقع معطى من النوع String
+  final Function(String) onSend;
 
   ChatInput({
     required this.messageController,
@@ -12,21 +12,51 @@ class ChatInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(1.0),
       child: Row(
         children: [
           Expanded(
-            child: TextField(
-              controller: messageController,
-              decoration: InputDecoration(hintText: 'Type a message...'),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                child: TextField(
+                  controller: messageController,
+                  decoration: InputDecoration(
+                    hintText: 'Type a message...',
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
             ),
           ),
-          IconButton(
-            icon: Icon(Icons.send),
-            onPressed: () {
-              // عند الضغط على زر الإرسال، يتم تمرير الرسالة إلى onSend
+          SizedBox(width: 10),
+          GestureDetector(
+            onTap: () {
+              print('Send button tapped');
               onSend(messageController.text);
             },
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Color(0xff004170),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.blue.withOpacity(0.4),
+                    blurRadius: 10,
+                    offset: Offset(0, 5),
+                  ),
+                ],
+              ),
+              child: Icon(
+                Icons.send,
+                color: Colors.white,
+              ),
+            ),
           ),
         ],
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
+import 'package:graduation_project/core/utils/app_text_styles.dart';
 
 class TapBar extends StatelessWidget {
   const TapBar({
@@ -25,7 +26,8 @@ class TapBar extends StatelessWidget {
                 height: 35,
               ),
               SizedBox(width: 10),
-              Text('Chats', style: TextStyle(fontSize: 20, color: Colors.white)),
+              Text('Chats',
+                style: TextStyles.bold19.copyWith(color: Colors.white)),
             ],
           ),
         ),
@@ -39,7 +41,8 @@ class TapBar extends StatelessWidget {
                 height: 35,
               ),
               SizedBox(width: 10),
-              Text('Groups', style: TextStyle(fontSize: 20, color: Colors.white)),
+              Text('Groups',
+                  style: TextStyles.bold19.copyWith(color: Colors.white)),
             ],
           ),
         ),
@@ -54,7 +57,8 @@ class TapBar extends StatelessWidget {
                 height: 35,
               ),
               SizedBox(width: 10),
-              Text('Live ', style: TextStyle(fontSize: 20, color: Colors.white)),
+              Text('Live ',
+                  style: TextStyles.bold19.copyWith(color: Colors.white)),
             ],
           ),
         ),

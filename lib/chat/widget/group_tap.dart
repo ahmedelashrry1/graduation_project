@@ -15,7 +15,7 @@ class GroupsTab extends StatelessWidget {
           title: Text('Group $index'),
           subtitle: Text('Last activity in Group $index'),
           onTap: () {
-            // الانتقال إلى شاشة الجروب
+            
           },
         );
       },
