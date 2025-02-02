@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/chat/widget/chat_details.dart';
+import 'package:graduation_project/Contact%20Room/chats/chat_details.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
 
@@ -23,7 +23,9 @@ class ChatsTab extends StatelessWidget {
           children: [
             ListTile(
               leading: CircleAvatar(
-                backgroundImage: AssetImage(chat['image']!), // صورة المستخدم
+                backgroundImage: AssetImage(chat['image']!),
+                
+                 // صورة المستخدم
               ),
               title: Text(
                 chat['name']!,
@@ -54,4 +56,5 @@ class ChatsTab extends StatelessWidget {
       },
     );
   }
+
 }

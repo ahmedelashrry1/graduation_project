@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:graduation_project/chat/widget/chat_controller.dart';
-import 'package:graduation_project/chat/widget/chat_body.dart';
+import 'package:graduation_project/Contact%20Room/chats/chat_controller.dart';
+import 'package:graduation_project/Contact%20Room/chats/chat_body.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:provider/provider.dart';
 

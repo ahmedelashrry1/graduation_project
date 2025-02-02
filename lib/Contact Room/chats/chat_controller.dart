@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/chat/model/message_model.dart';
+import 'package:graduation_project/Contact%20Room/model/message_model.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ChatController extends ChangeNotifier {

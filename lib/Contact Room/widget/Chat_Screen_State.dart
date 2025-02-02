@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/chat/widget/Tap_Bar.dart';
-import 'package:graduation_project/chat/widget/chat_tap.dart';
-import 'package:graduation_project/chat/widget/group_tap.dart';
-import 'package:graduation_project/chat/widget/live_tap.dart';
+import 'package:graduation_project/Contact%20Room/widget/Tap_Bar.dart';
+import 'package:graduation_project/Contact%20Room/chats/chat_tap.dart';
+import 'package:graduation_project/Contact%20Room/groups/group_tap.dart';
+import 'package:graduation_project/Contact%20Room/widget/live_tap.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
 

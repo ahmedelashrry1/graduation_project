@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/chat/widget/chat_input.dart';
-import 'package:graduation_project/chat/widget/bubble_chat.dart';
-import 'package:graduation_project/chat/widget/chat_controller.dart';
+import 'package:graduation_project/Contact%20Room/widget/bubble_chat.dart';
+import 'package:graduation_project/Contact%20Room/chats/chat_controller.dart';
 import 'package:provider/provider.dart';
 
 class ChatBody extends StatelessWidget {
