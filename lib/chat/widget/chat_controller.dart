@@ -5,6 +5,7 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 class ChatController extends ChangeNotifier {
   late IO.Socket socket;
   final List<Messages> _messages = [];
+  final List<Messages> _pendingMessages = []; // لتخزين الرسائل غير المرسلة مؤقتًا
   final TextEditingController messageController = TextEditingController();
   final ScrollController scrollController = ScrollController();
 
@@ -16,10 +17,12 @@ class ChatController extends ChangeNotifier {
   }
 
   void _connectToSocket() {
-    socket = IO.io('http://localhost:3000', <String, dynamic>{
-      'transports': ['websocket'],
-      'autoConnect': true,
-    });
+  try {
+    socket = IO.io('http://10.0.2.2:3000', <String, dynamic>{
+  'transports': ['websocket'],
+  'autoConnect': true,
+});
+
 
     socket.onConnect((_) {
       print('Connected to Socket.IO server');
@@ -35,8 +38,20 @@ class ChatController extends ChangeNotifier {
       _scrollToBottom();
     });
 
-    socket.onDisconnect((_) => print('Disconnected from server'));
+    socket.onDisconnect((_) {
+      print('Disconnected from server');
+    });
+
+    socket.onError((error) {
+      print('Error connecting to server: $error');
+      // التعامل مع الخطأ أو عرض رسالة للمستخدم
+    });
+  } catch (e) {
+    print('Exception: $e');
+    // معالجة استثناءات أخرى مثل عدم القدرة على الاتصال
   }
+}
+
 
   void sendMessage({required String message, required String receiverId, required String senderId}) {
     if (message.isNotEmpty) {
@@ -46,8 +61,19 @@ class ChatController extends ChangeNotifier {
         'receiverId': receiverId,
       };
 
-      socket.emit('send_message', data);
+      // إذا كان الخادم متصلًا، أرسل الرسالة مباشرةً
+      if (socket.connected) {
+        socket.emit('send_message', data);
+      } else {
+        // إذا لم يكن الخادم متصلًا، خزّن الرسالة في قائمة الرسائل المعلقة
+        _pendingMessages.add(Messages(
+          message: message,
+          senderId: currentUserId,
+          receiverId: receiverId,
+        ));
+      }
 
+      // إضافة الرسالة إلى قائمة الرسائل المحلية
       _messages.add(Messages(
         message: message,
         senderId: currentUserId,
@@ -58,6 +84,20 @@ class ChatController extends ChangeNotifier {
       notifyListeners();
       _scrollToBottom();
     }
+  }
+
+  // إرسال الرسائل المعلقة عند إعادة الاتصال بالخادم
+  void _sendPendingMessages() {
+    for (var pendingMessage in _pendingMessages) {
+      final data = {
+        'message': pendingMessage.message,
+        'senderId': currentUserId,
+        'receiverId': pendingMessage.receiverId,
+      };
+      socket.emit('send_message', data); // إرسال الرسالة إلى الخادم
+    }
+    // بعد إرسال جميع الرسائل المعلقة، امسح قائمة الرسائل المعلقة
+    _pendingMessages.clear();
   }
 
   void _scrollToBottom() {
