@@ -7,16 +7,10 @@ class LoginBodyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        // vertical: 20,
-      ),
-      child: Scaffold( 
-        appBar: buildAppBar(context, title: 'Login'),
-        
-        body: LoginBodyDetiles(),
-      ),
+    return Scaffold( 
+      appBar: buildAppBar(context, title: 'Login' ),
+      
+      body: LoginBodyDetiles(),
     );
   }
 }

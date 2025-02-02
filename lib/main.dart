@@ -17,15 +17,15 @@ class MyApp extends StatelessWidget {
         fontFamily: 'cairo',
       ),
       // locale: const Locale('ar'), // اللغة الافتراضية: العربية
-      supportedLocales: const [
-        Locale('ar'), // اللغة العربية
-        Locale('en'), // اللغة الإنجليزية
-      ],
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+      // supportedLocales: const [
+      //   Locale('ar'), // اللغة العربية
+      //   Locale('en'), // اللغة الإنجليزية
+      // ],
+      // localizationsDelegates: [
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate,
+      //   GlobalCupertinoLocalizations.delegate,
+      // ],
       debugShowCheckedModeBanner: false,
       home: const LoginView(),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/chat/widget/chat_input.dart';
+import 'package:graduation_project/Contact%20Room/widget/Chat_Input.dart';
 import 'package:graduation_project/Contact%20Room/widget/bubble_chat.dart';
 import 'package:graduation_project/Contact%20Room/chats/chat_controller.dart';
 import 'package:provider/provider.dart';
@@ -10,8 +10,8 @@ class ChatBody extends StatelessWidget {
 
   const ChatBody({
     super.key,
-    required this.currentUserId, // ✅
-    required this.receiverId,    // ✅
+    required this.currentUserId,
+    required this.receiverId,
   });
 
   @override
@@ -19,36 +19,52 @@ class ChatBody extends StatelessWidget {
     return SafeArea(
       child: Consumer<ChatController>(
         builder: (context, chatController, child) {
-          return Column(
+          return Stack( // ✅ استخدام Stack لوضع الصورة في الخلف
             children: [
-              Expanded(
-                child: ListView.builder(
-                  controller: chatController.scrollController,
-                  itemCount: chatController.messages.length,
-                  itemBuilder: (context, index) {
-                    final message = chatController.messages[index];
-                    bool isCurrentUser = message.senderId == currentUserId;
-                    return ChatBubble(
-                      message: message.message,
-                      isCurrentUser: isCurrentUser,
-                    );
-                  },
+            Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0, // ✅ تمديد الصورة للأسفل بمقدار 100 بكسل
+                child: Image.asset(
+                  'assets/images/background chat.jpeg',
+                  fit: BoxFit.cover,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: ChatInput(
-                  messageController: chatController.messageController,
-                  senderId: currentUserId,   // ✅ استخدام معرف المستخدم الحالي
-                  receiverId: receiverId,    // ✅ استخدام معرف المستقبل
-                  onSend: (String message, String senderId, String receiverId) {
-                    chatController.sendMessage(
-                      message: message,
-                      senderId: senderId,
+
+              // ✅ محتوى الدردشة فوق الخلفية
+              Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      controller: chatController.scrollController,
+                      itemCount: chatController.messages.length,
+                      itemBuilder: (context, index) {
+                        final message = chatController.messages[index];
+                        bool isCurrentUser = message.senderId == currentUserId;
+                        return ChatBubble(
+                          message: message.message,
+                          isCurrentUser: isCurrentUser,
+                        );
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ChatInput(
+                      messageController: chatController.messageController,
+                      senderId: currentUserId,
                       receiverId: receiverId,
-                    );
-                  },
-                ),
+                      onSend: (String message, String senderId, String receiverId) {
+                        chatController.sendMessage(
+                          message: message,
+                          senderId: senderId,
+                          receiverId: receiverId,
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ],
           );
