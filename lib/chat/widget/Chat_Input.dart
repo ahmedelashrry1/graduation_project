@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 
 class ChatInput extends StatelessWidget {
   final TextEditingController messageController;
-  final Function(String) onSend;
+  final Function(String message, String senderId, String receiverId) onSend; // ✅ تعديل هنا
+  final String senderId;   // ✅ إضافة معرف المرسل
+  final String receiverId; // ✅ إضافة معرف المستقبل
 
   ChatInput({
     required this.messageController,
     required this.onSend,
+    required this.senderId,   // ✅
+    required this.receiverId, // ✅
   });
 
   @override
@@ -36,8 +40,10 @@ class ChatInput extends StatelessWidget {
           SizedBox(width: 10),
           GestureDetector(
             onTap: () {
-              print('Send button tapped');
-              onSend(messageController.text);
+              if (messageController.text.isNotEmpty) {  // ✅ التأكد من وجود رسالة
+                onSend(messageController.text, senderId, receiverId); // ✅ تمرير المعرفات
+                messageController.clear();  // ✅ مسح الحقل بعد الإرسال
+              }
             },
             child: Container(
               padding: EdgeInsets.all(10),

@@ -29,17 +29,20 @@ class ChatsTab extends StatelessWidget {
                 chat['name']!,
                 style: TextStyles.bold16.copyWith(color: Colors.black),
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ChatDetails(
-                      userName: chat['name']!,
-                      userIcon: chat['image']!,
-                    ),
-                  ),
-                );
-              },
+            onTap: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ChatDetails(
+        userName: chat['name']!,
+        userIcon: chat['image']!,
+        currentUserId: 'user123',  // ✅ معرف المستخدم الحالي
+        receiverId: 'user456',     // ✅ معرف المستقبل
+      ),
+    ),
+  );
+}
+
             ),
             const SizedBox(height: 8), // المسافة بين المحادثات
             Divider(
